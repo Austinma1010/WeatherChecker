@@ -1,0 +1,44 @@
+body {
+    background-color: rgb(58, 58, 155);
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    color: white;
+}
+
+main {
+    display: flex;
+    flex-direction: row;
+}
+
+.display {
+    display: flex;
+    flex-direction: column;
+    width: 75%;
+    height: 100%;
+}
+
+.search {
+    display: flex;
+    flex-direction: column;
+    border: 5px black solid;
+    background-color: white;
+    width: 25%;
+    height: 100%;
+}
+
+.present {
+    border: 5px black solid;
+    background-color: white;
+    width: 75%;
+    height: 100%;
+}
+
+.future {
+    border: 5px black solid;
+    background-color: white;
+    width: 75%;
+    height: 100%;
+}
