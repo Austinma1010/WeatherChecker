@@ -27,6 +27,8 @@ main {
     background-color: white;
     width: 25%;
     height: 100%;
+    align-items: center;
+    padding: 25px;
 }
 
 .present {
@@ -41,4 +43,16 @@ main {
     background-color: white;
     width: 75%;
     height: 100%;
+}
+
+.inputRow {
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.input { 
+    max-height: 15px;
+    align-self: center;
+    
 }

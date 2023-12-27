@@ -11,10 +11,28 @@
     </header>
 
     <main>
-        <section id="search" class="search"></section>
-        <section id="display" class="display">
-            <div id="present" class="present"></div>
-            <div id="future" class="future"></div>
+        <section id="search" class="search">
+            <h2>Enter a location</h2>
+            <div class="inputRow">
+                <h3>Enter city name: </h3>
+                <input class="input" id="cityName">
+            </div>
+            <div class="inputRow">
+                <h3>Enter state ex(va): </h3>
+                <input class="input" id="stateName">
+            </div>
+            <div class="inputRow">
+                <h3>Enter country ex(us): </h3>
+                <input class="input" id="countryName">
+            </div>
+            <button id="searchBtn">Search!</button>
+        </section>
+        <section id="display">
+            <div id="present">
+                <h2 id="selectedCity"></h2>
+                <ul id="currentWeather"></ul>
+            </div>
+            <div id="future"></div>
         </section>
     </main>
 
