@@ -78,14 +78,15 @@ function getWeather(lat, lon) {
 function showCurrentWeather(temp, wind, humidity) {
   displayEl.setAttribute('class', 'display');
   presentEl.setAttribute('class', 'present');
-  showCityName.textContent = cityName.value;
-  var tempEl = currentWeather.appendChild(document.createElement('li'));
+  currentWeather.setAttribute('class', 'weatherList');
+  showCityName.textContent = "Current weather in " + cityName.value + ":";
+  var tempEl = document.getElementById('currentTemp');
   tempEl.textContent = "Tempature: " + temp + " degrees fahrenheit";
 
-  var windEl = currentWeather.appendChild(document.createElement('li'));
+  var windEl = document.getElementById('currentWind');
   windEl.textContent = "Wind Speed: " + wind + "mph";
 
-  var humidityEl = currentWeather.appendChild(document.createElement('li'));
+  var humidityEl = document.getElementById('currentHumid');
   humidityEl.textContent = "Humidity: " + humidity;
 
 
@@ -98,46 +99,48 @@ function showForecast(day1, day2, day3, day4, day5) {
   var dayThree = document.getElementById('dayThree');
   var dayFour = document.getElementById('dayFour');
   var dayFive = document.getElementById('dayFive');
-  var dayOneDate = dayOne.appendChild(document.createElement('li'));
-  var dayOneTemp = dayOne.appendChild(document.createElement('li'));
-  var dayOneWind = dayOne.appendChild(document.createElement('li'));
-  var dayOneHumid = dayOne.appendChild(document.createElement('li'));
+  
+  var dayOneDate = document.getElementById('dayOneDate');
+  var dayOneTemp = document.getElementById('dayOneTemp');
+  var dayOneWind = document.getElementById('dayOneWind');
+  var dayOneHumid = document.getElementById('dayOneHumid');
+
   dayOneDate.textContent = "date: " + formatDate(day1.dt_txt); 
   dayOneTemp.textContent = "temperature: " + day1.main.temp + " degrees fahrenheit";
   dayOneWind.textContent = "wind speed: " + day1.wind.speed + "mph";
   dayOneHumid.textContent = "humidity: " + day1.main.humidity;
 
-  var dayTwoDate = dayTwo.appendChild(document.createElement('li'));
-  var dayTwoTemp = dayTwo.appendChild(document.createElement('li'));
-  var dayTwoWind = dayTwo.appendChild(document.createElement('li'));
-  var dayTwoHumid = dayTwo.appendChild(document.createElement('li'));
+  var dayTwoDate = document.getElementById('dayTwoDate');
+  var dayTwoTemp = document.getElementById('dayTwoTemp');
+  var dayTwoWind = document.getElementById('dayTwoWind');
+  var dayTwoHumid = document.getElementById('dayTwoHumid');
   dayTwoDate.textContent = "date: " + formatDate(day2.dt_txt); 
   dayTwoTemp.textContent = "temperature: " + day2.main.temp + " degrees fahrenheit";
   dayTwoWind.textContent = "wind speed: " + day2.wind.speed + "mph";
   dayTwoHumid.textContent = "humidity: " + day2.main.humidity;
 
-  var dayThreeDate = dayThree.appendChild(document.createElement('li'));
-  var dayThreeTemp = dayThree.appendChild(document.createElement('li'));
-  var dayThreeWind = dayThree.appendChild(document.createElement('li'));
-  var dayThreeHumid = dayThree.appendChild(document.createElement('li'));
+  var dayThreeDate = document.getElementById('dayThreeDate');
+  var dayThreeTemp = document.getElementById('dayThreeTemp');
+  var dayThreeWind = document.getElementById('dayThreeWind');
+  var dayThreeHumid = document.getElementById('dayThreeHumid');
   dayThreeDate.textContent = "date: " + formatDate(day3.dt_txt); 
   dayThreeTemp.textContent = "temperature: " + day3.main.temp + " degrees fahrenheit";
   dayThreeWind.textContent = "wind speed: " + day3.wind.speed + "mph";
   dayThreeHumid.textContent = "humidity: " + day3.main.humidity;
 
-  var dayFourDate = dayFour.appendChild(document.createElement('li'));
-  var dayFourTemp = dayFour.appendChild(document.createElement('li'));
-  var dayFourWind = dayFour.appendChild(document.createElement('li'));
-  var dayFourHumid = dayFour.appendChild(document.createElement('li'));
+  var dayFourDate = document.getElementById('dayFourDate');
+  var dayFourTemp = document.getElementById('dayFourTemp');
+  var dayFourWind = document.getElementById('dayFourWind');
+  var dayFourHumid = document.getElementById('dayFourHumid');
   dayFourDate.textContent = "date: " + formatDate(day4.dt_txt); 
   dayFourTemp.textContent = "temperature: " + day4.main.temp + " degrees fahrenheit";
   dayFourWind.textContent = "wind speed: " + day4.wind.speed + "mph";
   dayFourHumid.textContent = "humidity: " + day4.main.humidity;
 
-  var dayFiveDate = dayFive.appendChild(document.createElement('li'));
-  var dayFiveTemp = dayFive.appendChild(document.createElement('li'));
-  var dayFiveWind = dayFive.appendChild(document.createElement('li'));
-  var dayFiveHumid = dayFive.appendChild(document.createElement('li'));
+  var dayFiveDate = document.getElementById('dayFiveDate');
+  var dayFiveTemp = document.getElementById('dayFiveTemp');
+  var dayFiveWind = document.getElementById('dayFiveWind');
+  var dayFiveHumid = document.getElementById('dayFiveHumid');
   dayFiveDate.textContent = "date: " + formatDate(day5.dt_txt); 
   dayFiveTemp.textContent = "temperature: " + day5.main.temp + " degrees fahrenheit";
   dayFiveWind.textContent = "wind speed: " + day5.wind.speed + "mph";
