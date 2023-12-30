@@ -39,6 +39,8 @@ main {
 }
 
 .future {
+    display:flex;
+    flex-direction: row;
     border: 5px black solid;
     background-color: white;
     width: 75%;
