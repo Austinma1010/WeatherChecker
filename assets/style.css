@@ -38,6 +38,38 @@ main {
     margin: 10px;
 }
 
+.searchBtn {
+    margin: 10px;
+    padding: 5px;
+    background-color: rgb(34, 146, 59);
+    color: white;
+    border: 2px rgb(34, 146, 59) solid;
+    border-radius: 4px;
+}
+
+.searchBtn:hover {
+    border: 4px rgb(34, 146, 59) solid;
+}
+.searchBtn:active {
+    font-weight: bolder;
+}
+
+.saveBtn {
+    margin: 10px;
+    padding: 5px;
+    background-color: rgb(29, 138, 172);
+    color: white;
+    border: 2px rgb(29, 138, 172) solid;
+    border-radius: 4px;
+}
+
+.saveBtn:hover {
+    border: 4px rgb(29, 138, 172) solid;
+}
+.saveBtn:active {
+    font-weight: bolder;
+}
+
 .present {
     display: flex;
     justify-content: center;
@@ -81,4 +113,49 @@ main {
 .forecastList {
     list-style: none;
     border-right: 2px black solid;
+}
+
+.savedListEl {
+    list-style: none;
+    border: 2px black solid;
+    border-radius: 4px;
+    margin: 10px 60px 10px 10px;
+    padding:5px 20px 5px 20px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.savedList {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: center;
+}
+
+.clearLocBtn {
+    padding: 10px;
+    background-color: rgb(161, 51, 51);
+    color: white;
+    border: 2px rgb(161, 51, 51) solid;
+    border-radius: 5px;
+
+}
+
+.clearLocBtn:hover {
+    border: 4px rgb(161, 51, 51) solid;
+
+}
+.clearLocBtn:active {
+    font-weight: bolder;
+}
+
+.icon {
+    width: 200px;
+    height: 150px;
+}
+
+.forecastIcon {
+    width: 50px;
+    height: 50px;
+
 }

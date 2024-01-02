@@ -34,7 +34,7 @@ fetch(requestUrl)
     
     var latitude = data[0].lat;
     var longitude = data[0].lon;
-    console.log(latitude);
+    
     getWeather(city, latitude, longitude);
     getForecast(latitude, longitude);
 
@@ -52,8 +52,10 @@ fetch(requestUrl)
     return response.json();
   })
   .then(function (data) {
+
+    
    
-    console.log(data);
+    
     var day1 = data.list[4];
     var day2 = data.list[12];
     var day3 = data.list[20];
@@ -78,7 +80,12 @@ function getWeather(city, lat, lon) {
       var temp = data.main.temp;
       var wind = data.wind.speed;
       var humidity = data.main.humidity;
-      console.log(data.main.humidity)
+    
+      var icon = data.weather[0].icon;
+      var iconEl = document.getElementById('currentWeatherIcon');
+      iconEl.setAttribute('src', 'http://openweathermap.org/img/w/' + icon + '.png');
+      iconEl.setAttribute('class', 'icon');
+      
 
       showCurrentWeather(city, temp, wind, humidity);
 
@@ -105,13 +112,19 @@ function showCurrentWeather(city, temp, wind, humidity) {
 }
 
 function showForecast(day1, day2, day3, day4, day5) {
+  
   futureEl.setAttribute('class', 'future');
   var dayOne = document.getElementById('dayOne');
   var dayTwo = document.getElementById('dayTwo');
   var dayThree = document.getElementById('dayThree');
   var dayFour = document.getElementById('dayFour');
   var dayFive = document.getElementById('dayFive');
-  
+
+  var dayOneIcon = day1.weather[0].icon;
+  var dayOneIconEl = document.getElementById('dayOneIcon');
+  dayOneIconEl.setAttribute('src', 'http://openweathermap.org/img/w/' + dayOneIcon + '.png');
+  dayOneIconEl.setAttribute('class', 'forecastIcon');
+
   var dayOneDate = document.getElementById('dayOneDate');
   var dayOneTemp = document.getElementById('dayOneTemp');
   var dayOneWind = document.getElementById('dayOneWind');
@@ -126,6 +139,12 @@ function showForecast(day1, day2, day3, day4, day5) {
   var dayTwoTemp = document.getElementById('dayTwoTemp');
   var dayTwoWind = document.getElementById('dayTwoWind');
   var dayTwoHumid = document.getElementById('dayTwoHumid');
+
+  var dayTwoIcon = day2.weather[0].icon;
+  var dayTwoIconEl = document.getElementById('dayTwoIcon');
+  dayTwoIconEl.setAttribute('src', 'http://openweathermap.org/img/w/' + dayTwoIcon + '.png');
+  dayTwoIconEl.setAttribute('class', 'forecastIcon');
+
   dayTwoDate.textContent = "date: " + formatDate(day2.dt_txt); 
   dayTwoTemp.textContent = "temperature: " + day2.main.temp + " degrees fahrenheit";
   dayTwoWind.textContent = "wind speed: " + day2.wind.speed + "mph";
@@ -135,6 +154,12 @@ function showForecast(day1, day2, day3, day4, day5) {
   var dayThreeTemp = document.getElementById('dayThreeTemp');
   var dayThreeWind = document.getElementById('dayThreeWind');
   var dayThreeHumid = document.getElementById('dayThreeHumid');
+
+  var dayThreeIcon = day3.weather[0].icon;
+  var dayThreeIconEl = document.getElementById('dayThreeIcon');
+  dayThreeIconEl.setAttribute('src', 'http://openweathermap.org/img/w/' + dayThreeIcon + '.png');
+  dayThreeIconEl.setAttribute('class', 'forecastIcon');
+
   dayThreeDate.textContent = "date: " + formatDate(day3.dt_txt); 
   dayThreeTemp.textContent = "temperature: " + day3.main.temp + " degrees fahrenheit";
   dayThreeWind.textContent = "wind speed: " + day3.wind.speed + "mph";
@@ -144,6 +169,12 @@ function showForecast(day1, day2, day3, day4, day5) {
   var dayFourTemp = document.getElementById('dayFourTemp');
   var dayFourWind = document.getElementById('dayFourWind');
   var dayFourHumid = document.getElementById('dayFourHumid');
+
+  var dayFourIcon = day4.weather[0].icon;
+  var dayFourIconEl = document.getElementById('dayFourIcon');
+  dayFourIconEl.setAttribute('src', 'http://openweathermap.org/img/w/' + dayFourIcon + '.png');
+  dayFourIconEl.setAttribute('class', 'forecastIcon');
+
   dayFourDate.textContent = "date: " + formatDate(day4.dt_txt); 
   dayFourTemp.textContent = "temperature: " + day4.main.temp + " degrees fahrenheit";
   dayFourWind.textContent = "wind speed: " + day4.wind.speed + "mph";
@@ -153,6 +184,12 @@ function showForecast(day1, day2, day3, day4, day5) {
   var dayFiveTemp = document.getElementById('dayFiveTemp');
   var dayFiveWind = document.getElementById('dayFiveWind');
   var dayFiveHumid = document.getElementById('dayFiveHumid');
+
+  var dayFiveIcon = day5.weather[0].icon;
+  var dayFiveIconEl = document.getElementById('dayFiveIcon');
+  dayFiveIconEl.setAttribute('src', 'http://openweathermap.org/img/w/' + dayFiveIcon + '.png');
+  dayFiveIconEl.setAttribute('class', 'forecastIcon');
+
   dayFiveDate.textContent = "date: " + formatDate(day5.dt_txt); 
   dayFiveTemp.textContent = "temperature: " + day5.main.temp + " degrees fahrenheit";
   dayFiveWind.textContent = "wind speed: " + day5.wind.speed + "mph";
@@ -176,6 +213,7 @@ function saveLocation(location) {
   localStorage.setItem('locations', JSON.stringify(savedLocations));
   var savedList = document.getElementById('savedList');
   var listEl = savedList.appendChild(document.createElement('li'));
+  listEl.setAttribute('class' ,'savedListEl');
   listEl.textContent = location;
   listEl.addEventListener('click', searchSaved);
 
@@ -186,6 +224,7 @@ function showSaved() {
   var savedList = document.getElementById('savedList');
   for (var i = 0; i < savedLocations.length; i++) {
     var listEl = savedList.appendChild(document.createElement('li'));
+    listEl.setAttribute('class' ,'savedListEl');
     listEl.textContent = savedLocations[i];
     listEl.addEventListener('click', searchSaved);
   }
@@ -198,6 +237,8 @@ function searchSaved(event) {
 }
 
 function clearLocalStorage() {
+  var list = document.getElementById('savedList');
+  list.innerHTML = '';
   var empty = [];
   var savedLocations = JSON.parse(localStorage.getItem('locations')) || [];
   localStorage.setItem('locations', JSON.stringify(empty));
