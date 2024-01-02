@@ -9,19 +9,23 @@ var showCityName = document.getElementById("selectedCity");
 var currentWeather = document.getElementById("currentWeather");
 var saveBtn = document.getElementById('saveBtn');
 var clearBtn = document.getElementById('clearSave');
+// above code grabs HTML elements that will be used in The JS code
 
-
+// adds eventListener to the 'clear Locations' button
 clearBtn.addEventListener('click', clearLocalStorage);
+// adds eventListener to the 'Search!' button
 search.addEventListener('click', function() {
   geoData(cityName.value);
 });
+// adds eventListener to the 'Save Location' button
 saveBtn.addEventListener('click', function() {
   saveLocation(cityName.value)
 });
-showSaved();
+
+showSaved(); // updates the saved Locations list when page starts
 
 
-function geoData(city) {
+function geoData(city) { // converts searched city name to lat and lon coordinates
   
   
     var requestUrl = "http://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=1&appid=5b96ab0189348a63ef62caf75d4120ff";
@@ -44,7 +48,7 @@ fetch(requestUrl)
 
 
 
-function getForecast(lat, lon) {
+function getForecast(lat, lon) { // retrieves the forecast weather data from API
     var requestUrl = "http://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&units=imperial&appid=aa3fbae0a4e68296f1ce493a844937a7";
 
 fetch(requestUrl)
@@ -68,7 +72,7 @@ fetch(requestUrl)
 })
 }
 
-function getWeather(city, lat, lon) {
+function getWeather(city, lat, lon) { // retrieves current weather data from API
   var requestUrl = "http://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&units=imperial&lang=en&appid=aa3fbae0a4e68296f1ce493a844937a7";
 
   fetch(requestUrl)
@@ -94,7 +98,7 @@ function getWeather(city, lat, lon) {
   })
 }
 
-function showCurrentWeather(city, temp, wind, humidity) {
+function showCurrentWeather(city, temp, wind, humidity) { // displays retrieved current weather data to page
   displayEl.setAttribute('class', 'display');
   presentEl.setAttribute('class', 'present');
   currentWeather.setAttribute('class', 'weatherList');
@@ -111,9 +115,11 @@ function showCurrentWeather(city, temp, wind, humidity) {
 
 }
 
-function showForecast(day1, day2, day3, day4, day5) {
+function showForecast(day1, day2, day3, day4, day5) { // displays retrieved forecast weather data to page
   
   futureEl.setAttribute('class', 'future');
+  var title = document.getElementById('fiveDayForecast');
+  title.textContent = 'Five Day Forecast:';
   var dayOne = document.getElementById('dayOne');
   var dayTwo = document.getElementById('dayTwo');
   var dayThree = document.getElementById('dayThree');
@@ -126,71 +132,91 @@ function showForecast(day1, day2, day3, day4, day5) {
   dayOneIconEl.setAttribute('class', 'forecastIcon');
 
   var dayOneDate = document.getElementById('dayOneDate');
+  dayOneDate.setAttribute('class', 'dateEl');
   var dayOneTemp = document.getElementById('dayOneTemp');
+  dayOneTemp.setAttribute('class', 'forecastListEl');
   var dayOneWind = document.getElementById('dayOneWind');
+  dayOneWind.setAttribute('class', 'forecastListEl');
   var dayOneHumid = document.getElementById('dayOneHumid');
+  dayOneHumid.setAttribute('class', 'forecastListEl');
 
-  dayOneDate.textContent = "date: " + formatDate(day1.dt_txt); 
+  dayOneDate.textContent = formatDate(day1.dt_txt); 
   dayOneTemp.textContent = "temperature: " + day1.main.temp + " degrees fahrenheit";
   dayOneWind.textContent = "wind speed: " + day1.wind.speed + "mph";
   dayOneHumid.textContent = "humidity: " + day1.main.humidity;
 
   var dayTwoDate = document.getElementById('dayTwoDate');
+  dayTwoDate.setAttribute('class', 'dateEl');
   var dayTwoTemp = document.getElementById('dayTwoTemp');
+  dayTwoTemp.setAttribute('class', 'forecastListEl');
   var dayTwoWind = document.getElementById('dayTwoWind');
+  dayTwoWind.setAttribute('class', 'forecastListEl');
   var dayTwoHumid = document.getElementById('dayTwoHumid');
+  dayTwoHumid.setAttribute('class', 'forecastListEl');
 
   var dayTwoIcon = day2.weather[0].icon;
   var dayTwoIconEl = document.getElementById('dayTwoIcon');
   dayTwoIconEl.setAttribute('src', 'http://openweathermap.org/img/w/' + dayTwoIcon + '.png');
   dayTwoIconEl.setAttribute('class', 'forecastIcon');
 
-  dayTwoDate.textContent = "date: " + formatDate(day2.dt_txt); 
+  dayTwoDate.textContent = formatDate(day2.dt_txt); 
   dayTwoTemp.textContent = "temperature: " + day2.main.temp + " degrees fahrenheit";
   dayTwoWind.textContent = "wind speed: " + day2.wind.speed + "mph";
   dayTwoHumid.textContent = "humidity: " + day2.main.humidity;
 
   var dayThreeDate = document.getElementById('dayThreeDate');
+  dayThreeDate.setAttribute('class', 'dateEl');
   var dayThreeTemp = document.getElementById('dayThreeTemp');
+  dayThreeTemp.setAttribute('class', 'forecastListEl');
   var dayThreeWind = document.getElementById('dayThreeWind');
+  dayThreeWind.setAttribute('class', 'forecastListEl');
   var dayThreeHumid = document.getElementById('dayThreeHumid');
+  dayThreeHumid.setAttribute('class', 'forecastListEl');
 
   var dayThreeIcon = day3.weather[0].icon;
   var dayThreeIconEl = document.getElementById('dayThreeIcon');
   dayThreeIconEl.setAttribute('src', 'http://openweathermap.org/img/w/' + dayThreeIcon + '.png');
   dayThreeIconEl.setAttribute('class', 'forecastIcon');
 
-  dayThreeDate.textContent = "date: " + formatDate(day3.dt_txt); 
+  dayThreeDate.textContent = formatDate(day3.dt_txt); 
   dayThreeTemp.textContent = "temperature: " + day3.main.temp + " degrees fahrenheit";
   dayThreeWind.textContent = "wind speed: " + day3.wind.speed + "mph";
   dayThreeHumid.textContent = "humidity: " + day3.main.humidity;
 
   var dayFourDate = document.getElementById('dayFourDate');
+  dayFourDate.setAttribute('class', 'dateEl');
   var dayFourTemp = document.getElementById('dayFourTemp');
+  dayFourTemp.setAttribute('class', 'forecastListEl');
   var dayFourWind = document.getElementById('dayFourWind');
+  dayFourWind.setAttribute('class', 'forecastListEl');
   var dayFourHumid = document.getElementById('dayFourHumid');
+  dayFourHumid.setAttribute('class', 'forecastListEl');
 
   var dayFourIcon = day4.weather[0].icon;
   var dayFourIconEl = document.getElementById('dayFourIcon');
   dayFourIconEl.setAttribute('src', 'http://openweathermap.org/img/w/' + dayFourIcon + '.png');
   dayFourIconEl.setAttribute('class', 'forecastIcon');
 
-  dayFourDate.textContent = "date: " + formatDate(day4.dt_txt); 
+  dayFourDate.textContent = formatDate(day4.dt_txt); 
   dayFourTemp.textContent = "temperature: " + day4.main.temp + " degrees fahrenheit";
   dayFourWind.textContent = "wind speed: " + day4.wind.speed + "mph";
   dayFourHumid.textContent = "humidity: " + day4.main.humidity;
 
   var dayFiveDate = document.getElementById('dayFiveDate');
+  dayFiveDate.setAttribute('class', 'dateEl');
   var dayFiveTemp = document.getElementById('dayFiveTemp');
+  dayFiveTemp.setAttribute('class', 'forecastListEl');
   var dayFiveWind = document.getElementById('dayFiveWind');
+  dayFiveWind.setAttribute('class', 'forecastListEl');
   var dayFiveHumid = document.getElementById('dayFiveHumid');
+  dayFiveHumid.setAttribute('class', 'forecastListEl');
 
   var dayFiveIcon = day5.weather[0].icon;
   var dayFiveIconEl = document.getElementById('dayFiveIcon');
   dayFiveIconEl.setAttribute('src', 'http://openweathermap.org/img/w/' + dayFiveIcon + '.png');
   dayFiveIconEl.setAttribute('class', 'forecastIcon');
 
-  dayFiveDate.textContent = "date: " + formatDate(day5.dt_txt); 
+  dayFiveDate.textContent = formatDate(day5.dt_txt); 
   dayFiveTemp.textContent = "temperature: " + day5.main.temp + " degrees fahrenheit";
   dayFiveWind.textContent = "wind speed: " + day5.wind.speed + "mph";
   dayFiveHumid.textContent = "humidity: " + day5.main.humidity;
@@ -199,7 +225,7 @@ function showForecast(day1, day2, day3, day4, day5) {
   
 }
 
-function formatDate(date) {
+function formatDate(date) { // formats retrieved date data
   date = date.split(' ');
   date.pop();
   date = date.toString();
@@ -207,7 +233,7 @@ function formatDate(date) {
 
 }
 
-function saveLocation(location) {
+function saveLocation(location) { // saves a selected location to local storage
   var savedLocations = JSON.parse(localStorage.getItem('locations')) || [];
   savedLocations.push(location);
   localStorage.setItem('locations', JSON.stringify(savedLocations));
@@ -219,7 +245,7 @@ function saveLocation(location) {
 
 }
 
-function showSaved() {
+function showSaved() { // displays saved locations on page
   var savedLocations = JSON.parse(localStorage.getItem('locations')) || [];
   var savedList = document.getElementById('savedList');
   for (var i = 0; i < savedLocations.length; i++) {
@@ -230,13 +256,13 @@ function showSaved() {
   }
 }
 
-function searchSaved(event) {
+function searchSaved(event) { // lets user click on saved locations
   var check = event.target;
   geoData(check.textContent);
 
 }
 
-function clearLocalStorage() {
+function clearLocalStorage() { // Lets user clear local storage
   var list = document.getElementById('savedList');
   list.innerHTML = '';
   var empty = [];

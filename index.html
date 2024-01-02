@@ -15,19 +15,19 @@
             <h2>Enter a location</h2>
             <div class="inputRow">
                 <h3>Enter city name: </h3>
-                <input class="input" id="cityName">
+                <input class="input" id="cityName"> <!-- Search Bar -->
             </div>
             
             <button id="searchBtn" class="searchBtn">Search!</button>
             <button id="saveBtn" class="saveBtn">Save Location</button>
             <div id="saved">
                 <h2>Saved Locations</h2>
-                <ul id="savedList"></ul>
+                <ul id="savedList"></ul> <!-- Shows saved locations -->
                 <button id="clearSave" class="clearLocBtn">Clear Locations</button>
             </div>
         </section>
-        <section id="display">
-            <div id="present">
+        <section id="display"> <!-- Displays weather data -->
+            <div id="present"> <!-- displays current weather -->
                 <h2 id="selectedCity"></h2>
                 <ul id="currentWeather" class="weatherList">
                     <li id="currentTemp"></li>
@@ -36,38 +36,44 @@
                 </ul>
                 <img id="currentWeatherIcon">
             </div>
-            <div id="future">
+            <h2 id="fiveDayForecast" class="fiveDayForecast"></h2>
+            <div id="future"> <!-- Displays weather forecast -->
                 <div><ul id="dayOne" class="forecastList">
-                    <li><img id=dayOneIcon></li>
+                    
                     <li id="dayOneDate"></li>
+                    <li><img id=dayOneIcon></li>
                     <li id="dayOneTemp"></li>
                     <li id="dayOneWind"></li>
                     <li id="dayOneHumid"></li>
                 </ul></div>
                 <div><ul id="dayTwo" class="forecastList">
-                    <li><img id=dayTwoIcon></li>
+                    
                     <li id="dayTwoDate"></li>
+                    <li><img id=dayTwoIcon></li>
                     <li id="dayTwoTemp"></li>
                     <li id="dayTwoWind"></li>
                     <li id="dayTwoHumid"></li>
                 </ul></div>
                 <div><ul id="dayThree" class="forecastList">
-                    <li><img id=dayThreeIcon></li>
+                    
                     <li id="dayThreeDate"></li>
+                    <li><img id=dayThreeIcon></li>
                     <li id="dayThreeTemp"></li>
                     <li id="dayThreeWind"></li>
                     <li id="dayThreeHumid"></li>
                 </ul></div>
                 <div><ul id="dayFour" class="forecastList">
-                    <li><img id=dayFourIcon></li>
+                    
                     <li id="dayFourDate"></li>
+                    <li><img id=dayFourIcon></li>
                     <li id="dayFourTemp"></li>
                     <li id="dayFourWind"></li>
                     <li id="dayFourHumid"></li>
                 </ul></div>
                 <div><ul id="dayFive" class="forecastList">
-                    <li><img id=dayFiveIcon></li>
+                    
                     <li id="dayFiveDate"></li>
+                    <li><img id=dayFiveIcon></li>
                     <li id="dayFiveTemp"></li>
                     <li id="dayFiveWind"></li>
                     <li id="dayFiveHumid"></li>
@@ -76,6 +82,6 @@
             </div>
         </section>
     </main>
-
+<!--  -->
     <script src="./assets/script.js"></script>
   </body>
