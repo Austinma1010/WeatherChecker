@@ -7,7 +7,7 @@ var presentEl = document.getElementById("present");
 var futureEl = document.getElementById("future");
 var showCityName = document.getElementById("selectedCity");
 var currentWeather = document.getElementById("currentWeather");
-var saveBtn = document.getElementById('saveBtn');
+
 var clearBtn = document.getElementById('clearSave');
 // above code grabs HTML elements that will be used in The JS code
 
@@ -15,14 +15,14 @@ var clearBtn = document.getElementById('clearSave');
 clearBtn.addEventListener('click', clearLocalStorage);
 // adds eventListener to the 'Search!' button
 search.addEventListener('click', function() {
-  if (cityName.value == 0) {
+  if (cityName.value == 0) { // checks to make sure input isn't blank
     return;
   } else {
-  geoData(cityName.value); 
-  saveLocation(cityName.value);
+  geoData(cityName.value); // gets location info
+  saveLocation(cityName.value); // saves the searched location
 }
 });
-// adds eventListener to the 'Save Location' button
+
 
 
 showSaved(); // updates the saved Locations list when page starts
@@ -31,7 +31,7 @@ showSaved(); // updates the saved Locations list when page starts
 function geoData(city) { // converts searched city name to lat and lon coordinates
   
   
-    var requestUrl = "http://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=1&appid=5b96ab0189348a63ef62caf75d4120ff";
+    var requestUrl = "http://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=1&appid=5b96ab0189348a63ef62caf75d4120ff"; // requests data from API
     
 fetch(requestUrl)
   .then(function (response) {
@@ -52,7 +52,7 @@ fetch(requestUrl)
 
 
 function getForecast(lat, lon) { // retrieves the forecast weather data from API
-    var requestUrl = "http://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&units=imperial&appid=aa3fbae0a4e68296f1ce493a844937a7";
+    var requestUrl = "http://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&units=imperial&appid=aa3fbae0a4e68296f1ce493a844937a7"; // requests data from API
 
 fetch(requestUrl)
   .then(function (response) {
@@ -63,13 +63,13 @@ fetch(requestUrl)
     
    
     
-    var day1 = data.list[4];
-    var day2 = data.list[12];
-    var day3 = data.list[20];
-    var day4 = data.list[28];
-    var day5 = data.list[36];
-
-    showForecast(day1, day2, day3, day4, day5);
+    var day1 = data.list[4];  // Stores weather for first day in variable
+    var day2 = data.list[12]; // Stores weather for Second day in variable
+    var day3 = data.list[20]; // Stores weather for Third day in variable
+    var day4 = data.list[28]; // Stores weather for fourth day in variable
+    var day5 = data.list[36]; // Stores weather for fifth day in variable
+ 
+    showForecast(day1, day2, day3, day4, day5); // sends those variables into the next function as arguments
 
 
 })
@@ -131,11 +131,11 @@ function showForecast(day1, day2, day3, day4, day5) { // displays retrieved fore
 
   var dayOneIcon = day1.weather[0].icon;
   var dayOneIconEl = document.getElementById('dayOneIcon');
-  dayOneIconEl.setAttribute('src', 'http://openweathermap.org/img/w/' + dayOneIcon + '.png');
+  dayOneIconEl.setAttribute('src', 'http://openweathermap.org/img/w/' + dayOneIcon + '.png'); // Stores img in HTML element
   dayOneIconEl.setAttribute('class', 'forecastIcon');
 
-  var dayOneDate = document.getElementById('dayOneDate');
-  dayOneDate.setAttribute('class', 'dateEl');
+  var dayOneDate = document.getElementById('dayOneDate'); // grabs the HTML element that will store the data
+  dayOneDate.setAttribute('class', 'dateEl'); // Applies styling to the element
   var dayOneTemp = document.getElementById('dayOneTemp');
   dayOneTemp.setAttribute('class', 'forecastListEl');
   var dayOneWind = document.getElementById('dayOneWind');
