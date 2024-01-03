@@ -11,3 +11,5 @@ THEN I am presented with a 5-day forecast that displays the date, an icon repres
 THEN I am again presented with current and future conditions for that city
 # Image of webpage
 ![image](https://github.com/Austinma1010/WeatherChecker/assets/149961201/e4fe43b7-5a8f-477f-b412-9b87f8e99be7)
+# link to website
+[WeatherChecker](https://austinma1010.github.io/WeatherChecker/)
