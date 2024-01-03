@@ -15,12 +15,15 @@ var clearBtn = document.getElementById('clearSave');
 clearBtn.addEventListener('click', clearLocalStorage);
 // adds eventListener to the 'Search!' button
 search.addEventListener('click', function() {
-  geoData(cityName.value);
+  if (cityName.value == 0) {
+    return;
+  } else {
+  geoData(cityName.value); 
+  saveLocation(cityName.value);
+}
 });
 // adds eventListener to the 'Save Location' button
-saveBtn.addEventListener('click', function() {
-  saveLocation(cityName.value)
-});
+
 
 showSaved(); // updates the saved Locations list when page starts
 
@@ -220,6 +223,7 @@ function showForecast(day1, day2, day3, day4, day5) { // displays retrieved fore
   dayFiveTemp.textContent = "temperature: " + day5.main.temp + " degrees fahrenheit";
   dayFiveWind.textContent = "wind speed: " + day5.wind.speed + "mph";
   dayFiveHumid.textContent = "humidity: " + day5.main.humidity;
+  
 
 
   
