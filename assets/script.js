@@ -31,7 +31,7 @@ showSaved(); // updates the saved Locations list when page starts
 function geoData(city) { // converts searched city name to lat and lon coordinates
   
   
-    var requestUrl = "http://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=1&appid=5b96ab0189348a63ef62caf75d4120ff"; // requests data from API
+    var requestUrl = "https://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=1&appid=5b96ab0189348a63ef62caf75d4120ff"; // requests data from API
     
 fetch(requestUrl)
   .then(function (response) {
@@ -52,7 +52,7 @@ fetch(requestUrl)
 
 
 function getForecast(lat, lon) { // retrieves the forecast weather data from API
-    var requestUrl = "http://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&units=imperial&appid=aa3fbae0a4e68296f1ce493a844937a7"; // requests data from API
+    var requestUrl = "https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&units=imperial&appid=aa3fbae0a4e68296f1ce493a844937a7"; // requests data from API
 
 fetch(requestUrl)
   .then(function (response) {
@@ -76,7 +76,7 @@ fetch(requestUrl)
 }
 
 function getWeather(city, lat, lon) { // retrieves current weather data from API
-  var requestUrl = "http://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&units=imperial&lang=en&appid=aa3fbae0a4e68296f1ce493a844937a7";
+  var requestUrl = "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&units=imperial&lang=en&appid=aa3fbae0a4e68296f1ce493a844937a7";
 
   fetch(requestUrl)
     .then(function (response) {
@@ -131,7 +131,7 @@ function showForecast(day1, day2, day3, day4, day5) { // displays retrieved fore
 
   var dayOneIcon = day1.weather[0].icon;
   var dayOneIconEl = document.getElementById('dayOneIcon');
-  dayOneIconEl.setAttribute('src', 'http://openweathermap.org/img/w/' + dayOneIcon + '.png'); // Stores img in HTML element
+  dayOneIconEl.setAttribute('src', 'https://openweathermap.org/img/w/' + dayOneIcon + '.png'); // Stores img in HTML element
   dayOneIconEl.setAttribute('class', 'forecastIcon');
 
   var dayOneDate = document.getElementById('dayOneDate'); // grabs the HTML element that will store the data
@@ -159,7 +159,7 @@ function showForecast(day1, day2, day3, day4, day5) { // displays retrieved fore
 
   var dayTwoIcon = day2.weather[0].icon;
   var dayTwoIconEl = document.getElementById('dayTwoIcon');
-  dayTwoIconEl.setAttribute('src', 'http://openweathermap.org/img/w/' + dayTwoIcon + '.png');
+  dayTwoIconEl.setAttribute('src', 'https://openweathermap.org/img/w/' + dayTwoIcon + '.png');
   dayTwoIconEl.setAttribute('class', 'forecastIcon');
 
   dayTwoDate.textContent = formatDate(day2.dt_txt); 
@@ -178,7 +178,7 @@ function showForecast(day1, day2, day3, day4, day5) { // displays retrieved fore
 
   var dayThreeIcon = day3.weather[0].icon;
   var dayThreeIconEl = document.getElementById('dayThreeIcon');
-  dayThreeIconEl.setAttribute('src', 'http://openweathermap.org/img/w/' + dayThreeIcon + '.png');
+  dayThreeIconEl.setAttribute('src', 'https://openweathermap.org/img/w/' + dayThreeIcon + '.png');
   dayThreeIconEl.setAttribute('class', 'forecastIcon');
 
   dayThreeDate.textContent = formatDate(day3.dt_txt); 
@@ -197,7 +197,7 @@ function showForecast(day1, day2, day3, day4, day5) { // displays retrieved fore
 
   var dayFourIcon = day4.weather[0].icon;
   var dayFourIconEl = document.getElementById('dayFourIcon');
-  dayFourIconEl.setAttribute('src', 'http://openweathermap.org/img/w/' + dayFourIcon + '.png');
+  dayFourIconEl.setAttribute('src', 'https://openweathermap.org/img/w/' + dayFourIcon + '.png');
   dayFourIconEl.setAttribute('class', 'forecastIcon');
 
   dayFourDate.textContent = formatDate(day4.dt_txt); 
@@ -216,7 +216,7 @@ function showForecast(day1, day2, day3, day4, day5) { // displays retrieved fore
 
   var dayFiveIcon = day5.weather[0].icon;
   var dayFiveIconEl = document.getElementById('dayFiveIcon');
-  dayFiveIconEl.setAttribute('src', 'http://openweathermap.org/img/w/' + dayFiveIcon + '.png');
+  dayFiveIconEl.setAttribute('src', 'https://openweathermap.org/img/w/' + dayFiveIcon + '.png');
   dayFiveIconEl.setAttribute('class', 'forecastIcon');
 
   dayFiveDate.textContent = formatDate(day5.dt_txt); 
